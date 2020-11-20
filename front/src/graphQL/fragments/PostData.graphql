@@ -1,0 +1,11 @@
+fragment PostDataF on Post {
+	id
+	createdAt
+	text
+	points
+	user {
+		id
+		username
+		uniqueId
+	}
+}

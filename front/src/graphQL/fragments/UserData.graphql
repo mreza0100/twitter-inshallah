@@ -1,0 +1,9 @@
+fragment UserDataF on User {
+	id
+	username
+	email
+	bio
+	uniqueId
+	location
+	createdAt
+}

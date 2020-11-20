@@ -1,0 +1,12 @@
+# ! response for this fragment if <UserResponseMultiError> and cant spread with UserResponseData Fragment becase its on User
+mutation Login($uniqueIdOrEmail: String!, $password: String!) {
+	login(uniqueIdOrEmail: $uniqueIdOrEmail, password: $password) {
+		OK
+		user {
+			...UserDataF
+		}
+		errors {
+			...ErrorsDataF
+		}
+	}
+}

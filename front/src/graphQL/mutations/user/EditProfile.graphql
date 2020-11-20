@@ -1,0 +1,19 @@
+mutation EditProfile($username: String, $email: String, $uniqueId: String, $bio: String, $location: String) {
+	editProfile(
+		inputs: {
+			username: $username
+			email: $email
+			uniqueId: $uniqueId
+			bio: $bio
+			location: $location
+		}
+	) {
+		OK
+		user {
+			...UserDataF
+		}
+		errors {
+			...ErrorsDataF
+		}
+	}
+}

@@ -1,0 +1,20 @@
+query InternalPosts(
+	$limit: Int
+	$cursor: String
+	$titlePattern: String
+	$textPattern: String
+	$uniqueProfileId: String
+	$textSize: Int
+) {
+	posts(
+		limit: $limit
+		cursor: $cursor
+		textPattern: $textPattern
+		titlePattern: $titlePattern
+		uniqueProfileId: $uniqueProfileId
+	) {
+		posts {
+			id
+		}
+	}
+}

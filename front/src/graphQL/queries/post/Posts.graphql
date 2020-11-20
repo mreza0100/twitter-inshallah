@@ -1,0 +1,21 @@
+query Posts(
+	$limit: Int
+	$cursor: String
+	$titlePattern: String
+	$textPattern: String
+	$uniqueProfileId: String
+) {
+	posts(
+		limit: $limit
+		cursor: $cursor
+		titlePattern: $titlePattern
+		textPattern: $textPattern
+		uniqueProfileId: $uniqueProfileId
+	) {
+		hasMore
+		left
+		posts {
+			...PostDataF
+		}
+	}
+}

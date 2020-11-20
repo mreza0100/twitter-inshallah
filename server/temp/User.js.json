@@ -1,0 +1,61 @@
+{
+	"data": {
+		"className": "User",
+		"properties": {
+			"id": { "name": "id", "reference": "scalar", "primary": true, "unique": true, "type": "number" },
+			"createdAt": {
+				"name": "createdAt",
+				"reference": "scalar",
+				"type": "date",
+				"getter": false,
+				"setter": false
+			},
+			"updatedAt": {
+				"name": "updatedAt",
+				"reference": "scalar",
+				"type": "date",
+				"getter": false,
+				"setter": false
+			},
+			"username": {
+				"name": "username",
+				"reference": "scalar",
+				"type": "text",
+				"unique": true,
+				"getter": false,
+				"setter": false
+			},
+			"password": { "name": "password", "reference": "scalar", "type": "text", "getter": false, "setter": false }
+		},
+		"hooks": {},
+		"filters": {},
+		"primaryKeys": ["id"],
+		"indexes": [],
+		"uniques": [],
+		"path": "./dist/entities/User.js",
+		"name": "User",
+		"abstract": false,
+		"constructorParams": [],
+		"toJsonParams": [],
+		"useCache": true,
+		"compositePK": false,
+		"props": [
+			{ "name": "id", "reference": "scalar", "primary": true, "unique": true, "type": "number" },
+			{ "name": "createdAt", "reference": "scalar", "type": "date", "getter": false, "setter": false },
+			{ "name": "updatedAt", "reference": "scalar", "type": "date", "getter": false, "setter": false },
+			{
+				"name": "username",
+				"reference": "scalar",
+				"type": "text",
+				"unique": true,
+				"getter": false,
+				"setter": false
+			},
+			{ "name": "password", "reference": "scalar", "type": "text", "getter": false, "setter": false }
+		],
+		"collection": "user"
+	},
+	"origin": "./dist/entities/User.js",
+	"hash": "d45849ed505f54a4113b0f8b1f178e4a",
+	"version": "4.1.0"
+}

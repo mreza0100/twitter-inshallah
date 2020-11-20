@@ -1,0 +1,11 @@
+query User($uniqueId: String!) {
+	user(uniqueId: $uniqueId) {
+		user {
+			...UserDataF
+		}
+		errors {
+			...ErrorsDataF
+		}
+		OK
+	}
+}

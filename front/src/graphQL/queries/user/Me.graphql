@@ -1,0 +1,11 @@
+query Me {
+	me {
+		OK
+		user {
+			...UserDataF
+		}
+		errors {
+			...ErrorsDataF
+		}
+	}
+}
