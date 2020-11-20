@@ -1,6 +1,6 @@
+#Dockerfike is not working :(
 FROM ubuntu:16.04
 FROM node:latest
-
 
 
 
