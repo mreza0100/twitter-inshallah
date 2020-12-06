@@ -12,7 +12,7 @@
 		"debug": "node -r ts-node/register --inspect src/index.ts",
 		"watch-src": "tsc --watch",
 		"nodemon-dist": "nodemon --inspect dist",
-		"build": "export NODE_ENV=prod && tsc -p .",
+		"build": "npx tsc -p .",
 		"start": "node dist/index.js"
 	},
 	"dependencies": {

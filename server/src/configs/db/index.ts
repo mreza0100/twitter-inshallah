@@ -4,8 +4,8 @@ import { join } from "path";
 
 export default {
 	type: "postgres",
-	database: "lireddit",
 	username: "postgres",
+	database: "postgres",
 	password: "1",
 	entities: [join(__dirname, "../../entities/*")],
 	logging: __IS_DEV__,

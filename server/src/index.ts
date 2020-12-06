@@ -37,7 +37,6 @@ async function PSQLConnection() {
 		connection.getRepository(Post).delete({});
 		connection.getRepository(User).delete({});
 	}
-	return connection;
 }
 function redisConnection() {
 	return new Redis();

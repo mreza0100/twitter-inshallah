@@ -13,7 +13,7 @@ interface RequirementsT {
 }
 export default function burningApllo({ app, redis }: RequirementsT) {
 	const apolloServerConfigs: ApolloServerExpressConfig = {
-		playground: __IS_DEV__,
+		playground: true,
 		schema: buildSchemaSync({
 			resolvers: [PostResolver, UserResolver],
 			validate: false,
