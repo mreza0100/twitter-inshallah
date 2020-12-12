@@ -1,0 +1,1 @@
+{"version":3,"file":"redirects.js","sourceRoot":"","sources":["../../src/middlewares/redirects.ts"],"names":[],"mappings":";;AACA,oDAAkD;AAEnC,KAAK,UAAU,SAAS,CAAC,GAAgB;IACvD,IAAI,CAAC,sBAAU;QAAE,OAAO;IAExB,GAAG,CAAC,GAAG,CAAC,GAAG,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE;QACzB,GAAG,CAAC,QAAQ,CAAC,UAAU,CAAC,CAAC;IAC1B,CAAC,CAAC,CAAC;AACJ,CAAC;AAND,4BAMC"}

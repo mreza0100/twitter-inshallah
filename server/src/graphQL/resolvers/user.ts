@@ -15,9 +15,6 @@ import {
 	bioLengthEditProfile,
 	locationLengthEditProfile,
 } from "../errors/user/editProfile";
-import { notAValidToken, passwordLength as passwordLengthForChangePassword } from "../errors/user/change-password";
-import { COOKIE_NAME, FORGET_PASSWORD_PREFIX, FRONT_END_URL, trueOK as OK } from "../../helpers/constants";
-import { Arg, Ctx, Resolver, Mutation, Query, UseMiddleware, FieldResolver, Root } from "type-graphql";
 import {
 	UserResponse,
 	RegisterInput,
@@ -25,6 +22,9 @@ import {
 	EditProfielInput,
 	UserResponseMultiUsers,
 } from "../types/User";
+import { notAValidToken, passwordLength as passwordLengthForChangePassword } from "../errors/user/change-password";
+import { COOKIE_NAME, FORGET_PASSWORD_PREFIX, FRONT_END_URL, trueOK as OK } from "../../helpers/constants";
+import { Arg, Ctx, Resolver, Mutation, Query, UseMiddleware, FieldResolver, Root } from "type-graphql";
 import { notValidPasswordOrUsername } from "../errors/user/login";
 import { initWhere, mergeRecords } from "../../helpers";
 import privateRoute from "../middlewares/privateRoute";

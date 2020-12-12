@@ -3,7 +3,7 @@ import { PaginatedPosts, PostInput, PostResponse } from "../types/Post";
 import { getConnection, SelectQueryBuilder } from "typeorm";
 import privateRoute from "../middlewares/privateRoute";
 import { textLength } from "../errors/post/createPost";
-import { trueOK as OK } from "../../helpers/constants";
+import { trueOK as nullable } from "../../helpers/constants";
 import justInDev from "../middlewares/justInDev";
 import Updoot from "../../entities/Updoot";
 import { TextSearch } from "../../helpers";
@@ -26,7 +26,7 @@ function postInnerJoinWithUser(qb: SelectQueryBuilder<Post>) {
 @Resolver(Post)
 export default class PostResolver {
 	@UseMiddleware(privateRoute)
-	@Mutation(T => Post, { nullable: true })
+	@Mutation(T => Post, { nullable })
 	async vote(
 		@Arg("postId", T => Int) postId: number,
 		@Arg("value", T => Int) value: number,
@@ -71,14 +71,14 @@ export default class PostResolver {
 		return post;
 	}
 
-	@Query(T => PaginatedPosts, { nullable: true })
+	@Query(T => PaginatedPosts, { nullable })
 	async posts(
-		@Arg("limit", T => Int, { nullable: true, defaultValue: 25 }) limit: number | 25,
-		@Arg("skip", T => Int, { nullable: true, defaultValue: false }) skip: number | false,
-		@Arg("cursor", T => String, { nullable: true, defaultValue: false }) cursor: string | false,
-		@Arg("uniqueProfileId", T => String, { nullable: true, defaultValue: false }) uniqueProfileId: string | false,
-		@Arg("titlePattern", T => String, { nullable: true, defaultValue: false }) titlePattern: string | false,
-		@Arg("textPattern", T => String, { nullable: true, defaultValue: false }) textPattern: string | false,
+		@Arg("limit", T => Int, { nullable, defaultValue: 25 }) limit: number | 25,
+		@Arg("skip", T => Int, { nullable, defaultValue: false }) skip: number | false,
+		@Arg("cursor", T => String, { nullable, defaultValue: false }) cursor: string | false,
+		@Arg("uniqueProfileId", T => String, { nullable, defaultValue: false }) uniqueProfileId: string | false,
+		@Arg("titlePattern", T => String, { nullable, defaultValue: false }) titlePattern: string | false,
+		@Arg("textPattern", T => String, { nullable, defaultValue: false }) textPattern: string | false,
 		@Ctx() { userId }: GraphCTXT<number | undefined>
 	): Promise<PaginatedPosts> {
 		const qb = getConnection()
@@ -105,7 +105,7 @@ export default class PostResolver {
 	}
 
 	@UseMiddleware(privateRoute)
-	@Query(T => Post, { nullable: true })
+	@Query(T => Post, { nullable })
 	async post(
 		@Arg("id", T => Int)
 		postId: number,
@@ -115,22 +115,20 @@ export default class PostResolver {
 	}
 
 	@UseMiddleware(privateRoute)
-	@Mutation(T => Post, { nullable: true })
+	@Mutation(T => Post, { nullable })
 	async createPost(
 		@Arg("input", T => PostInput) input: PostInput,
 		@Ctx() { userId }: GraphCTXT
 	): Promise<Post | undefined> {
 		if (input.text.length > 160 || input.text.length < 1) return;
 
-		const getJoinedPostWithRelations = () => Post.findOne({ where: { id: postId }, relations: ["user"] });
-
 		const postId = (await Post.create({ ...input, userId }).save()).id;
 
-		return getJoinedPostWithRelations();
+		return Post.findOne({ where: { id: postId }, relations: ["user"] });
 	}
 
 	@UseMiddleware(privateRoute)
-	@Mutation(T => Boolean, { nullable: true })
+	@Mutation(T => Boolean, { nullable })
 	async deletePost(@Arg("id", T => Int) id: number, @Ctx() { userId }: GraphCTXT): Promise<boolean> {
 		const post = await Post.findOne({ where: { id } });
 		if (!post || post.userId !== userId) return false;
@@ -142,11 +140,8 @@ export default class PostResolver {
 	}
 
 	@UseMiddleware(privateRoute, justInDev)
-	@Query(T => [Post], { nullable: true })
-	async postTest(
-		@Arg("deleteAll", T => Boolean, { nullable: true }) deleteAll: boolean,
-		@Ctx() {}: GraphCTXT
-	): Promise<any> {
+	@Query(T => [Post], { nullable })
+	async postTest(@Arg("deleteAll", T => Boolean, { nullable }) deleteAll: boolean, @Ctx() {}: GraphCTXT): Promise<any> {
 		if (deleteAll) {
 			await Updoot.delete({});
 			await Post.delete({});

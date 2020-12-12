@@ -10,10 +10,6 @@ then
 fi
 echo "-------------------------------- ^.^ start ^.^ --------------------------------"
 
-echo "                                  ------- pulling images -------"
-sudo docker-compose pull
-echo "                                  ------- building images -------"
-sudo docker-compose build front server
 echo "                                  ------- ^^^ compose-up ^^^ -------"
 sudo docker-compose up -d
 

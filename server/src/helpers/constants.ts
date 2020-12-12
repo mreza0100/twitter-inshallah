@@ -7,5 +7,5 @@ export const SECRET_KEY = "@*!###@dkaaAWDwfkai2wDWA@@@adad?2WN@@KFNHJAKWAA";
 export const delayTime = 0;
 export const COOKIE_NAME = "qid";
 export const FORGET_PASSWORD_PREFIX = "forget-password:";
-export const FRONT_END_URL = __IS_DEV__ ? "http://localhost:8000" : "";
+export const FRONT_END_URL = __IS_DEV__ ? "http://localhost:8000" : process.env.FRONT_END_URL;
 export const DELETE_DB = __IS_DEV__ && false;
